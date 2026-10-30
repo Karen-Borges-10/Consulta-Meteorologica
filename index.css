@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #20365d;
+    background-color: #f4f7fc;
+    display: grid;
+    grid-template-areas: "header header"
+                         "main main";
+    
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+
+}
+header{
+    grid-area: header;
+    width: 100%;
+    padding: 20px 4.5%;
+    background: linear-gradient(90deg, #515fc5, #4d5bc0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    h1 {
+        color: white;
+        font-size: 30px;
+    }
+
+    p{
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+main{
+    grid-area: main;
+    padding: 30px 4.5%;
+
+    display: grid;
+    grid-template-columns: 2fr 0.95fr;
+    grid-template-areas:
+        "buscar buscar"
+        "clima favoritas"
+        "previsao favoritas";
+
+    gap: 20px 24px;
+    align-content: start;
+}
+#buscar_cidade {
+    grid-area: buscar;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+
+    #cidade {
+        flex: 1;
+        min-width: 0;
+        padding: 17px 24px;
+        border: 1px solid #d5def1;
+        border-radius: 8px;
+        background-color: white;
+        color: #20365d;
+        font-size: 18px;
+        outline-color: #515fc5;
+    }
+    #cidade::placeholder {
+        color: #7184aa;
+    }
+
+    button {
+        padding: 0 34px;
+        border: none;
+        border-radius: 7px;
+        background-color: #515fc5;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+#clima_atual {
+    grid-area: clima;
+    min-height: 370px;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #e0e7f5;
+    border-radius: 9px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: center;
+    gap: 25px;
+
+    h2 {
+        font-size: 48px;
+        color:#20365d
+    }
+    p {
+        font-size: 17px;
+    }
+
+}
+#clima_atual i {
+    color: #515fc5;
+    font-size: 28px;
+}
+
+#cidades_favoritas {
+    grid-area: favoritas;
+    align-self: start;
+    min-height: 300px;
+    padding: 24px;
+    background-color: white;
+    border: 1px solid #e0e7f5;
+    border-radius: 9px;
+
+    h3 {
+        padding-bottom: 18px;
+        border-bottom: 1px solid #e0e7f5;
+        font-size: 24px;
+
+    }
+}
+#proximos_dias {
+    grid-area: previsao;
+    min-height: 250px;
+    padding: 24px;
+    background-color: white;
+    border: 1px solid #e0e7f5;
+    border-radius: 9px;
+    h3 {
+        margin-bottom: 20px;
+        font-size: 23px;
+    }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css">
+    <title> CONSULTA METEOLÓGICA</title>
+</head>
+<body>
+    <header>
+        <h1>⛅ Clima Agora</h1>
+        <p>★ Cidades favoritas</p>
+    </header>
+    <main>
+
+        <form id="buscar_cidade">
+            <input type="text" id="cidade" placeholder="Digite o nome de uma cidade..." required>
+            <button type="submit" id="buscar">Buscar</button>
+        </form>
+
+        <p id="mensagem" role="status"></p>
+        <div id="locals">
+            <ul id="resultado"></ul>
+        </div>
+
+        <section id="clima_atual">
+            <p><i class="fi fi-rs-marker"></i></p>
+            <h2>℃</h2>
+            <p><i class="fi fi-rr-wind"></i></p>
+            <p><i class="fi fi-ts-temperature-high"></i></p>
+            <p><i class="fi fi-rs-dewpoint"></i></p>
+        </section>
+
+        <section id="cidades_favoritas">
+            <h3>Cidades favoritas</h3>
+        </section>
+
+        <section id="proximos_dias">
+            <h3>Previsão para os próximos dias</h3>
+        </section>
+    </main>
+</body>
+</html>
