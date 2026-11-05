@@ -16,18 +16,22 @@
         <p>★ Cidades favoritas</p>
     </header>
     <main>
+        <div id="area_busca">
+            <form id="buscar_cidade">
+                <input type="text" id="cidade" placeholder="Digite o nome de uma cidade..." required>
+                <button type="submit" id="buscar">Buscar</button>
+            </form>
+            <section id="selecao_localidade">
+                <p id="mensagem" role="status"></p>
 
-        <form id="buscar_cidade">
-            <input type="text" id="cidade" placeholder="Digite o nome de uma cidade..." required>
-            <button type="submit" id="buscar">Buscar</button>
-        </form>
-
-        <p id="mensagem" role="status"></p>
-        <div id="locals">
-            <ul id="resultado"></ul>
+                <div id="locais" hidden>
+                    <ul id="resultado"></ul>
+                </div>
+            </section>
         </div>
 
         <section id="clima_atual">
+            <ul id="dados_clima"></ul>
             <p><i class="fi fi-rs-marker"></i></p>
             <h2>℃</h2>
             <p><i class="fi fi-rr-wind"></i></p>
