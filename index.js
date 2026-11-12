@@ -3,8 +3,14 @@ const nome = document.querySelector("#cidade");
 const botao = document.querySelector("#buscar");
 const mensagem = document.querySelector("#mensagem");
 const resultado = document.querySelector("#resultado");
-const dados_clima = document.querySelector("#dados_clima");
 const lista_locais = document.querySelector("#locais");
+const nome_local_clima = document.querySelector("#nome_local_clima");
+const data_clima = document.querySelector("#data_clima");
+const temperatura_atual = document.querySelector("#temperatura_atual");
+const descricao_atual = document.querySelector("#descricao_atual");
+const vento_atual = document.querySelector("#vento_atual");
+const sensacao_atual = document.querySelector("#sensacao_atual");
+const umidade_atual = document.querySelector("#umidade_atual");
 
 formulario.addEventListener('submit', function(evento){
     evento.preventDefault();
@@ -15,11 +21,8 @@ formulario.addEventListener('submit', function(evento){
         return;
     }
     resultado.textContent = '';
-    dados_clima.textContent = '';
     lista_locais.hidden = true;
-    mensagem.textContent =  locais.length === 1
-    ? '1 localidade encontrada.'
-    : `${locais.length} localidades encontradas.`;
+    mensagem.textContent =  'Buscando localidades...';
     botao.disabled = true;
     const parametros = new URLSearchParams({
         name: termo,
@@ -28,7 +31,6 @@ formulario.addEventListener('submit', function(evento){
         format: 'json'
     });
     fetch(`https://geocoding-api.open-meteo.com/v1/search?${parametros}`).then(function(resposta){
-        console.log(resposta);
         if(!resposta.ok){
             throw new Error(`Erro HTTP:${resposta.status}`);
         }
@@ -109,7 +111,7 @@ function consultar_clima(local){
 const parametros = new URLSearchParams({
     latitude: local.latitude,
     longitude: local.longitude,
-    current: 'temperature_2m,relative_humidity_2m,weather_code',
+    current: 'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,apparent_temperature',
     timezone: 'auto',
     });
     fetch(`https://api.open-meteo.com/v1/forecast?${parametros}`).then(function(resposta){
@@ -122,21 +124,38 @@ const parametros = new URLSearchParams({
         const atual = dados.current;
         const unidades = dados.current_units;
 
-        mensagem.textContent = `Dados de ${local.name} - ${atual.time}(${dados.timezone})`;
+        
+        const partesLocal = [
+            local.name,
+            local.admin1,
+            local.country
+        ].filter(Boolean);
 
-        dados_clima.textContent = '';
+        nome_local_clima.textContent = partesLocal.join(', ');
 
-        const itens = [`Temperatura: ${atual.temperature_2m} ${unidades.temperature_2m}`,
-            `Umidade relativa: ${atual.relative_humidity_2m} ${unidades.relative_humidity_2m}`,
-            `Código do clima: ${atual.weather_code}`,
-            `Clima: ${descricoes_clima[atual.weather_code] || `Descrição não disponível`}`,
-        ];
+        const [ano, mes, dia] = atual.time.split('T')[0].split('-');
+        const data = new Date(Number(ano), Number(mes) - 1, Number(dia));
 
-        itens.forEach(function(texto){
-            const item = document.createElement('li');
-            item.textContent = texto;
-            dados_clima.appendChild(item);
+        data_clima.textContent = data.toLocaleDateString('pt-BR', {
+            weekday: 'short',
+            day: '2-digit',
+            month: 'short'
         });
+
+        temperatura_atual.textContent =
+            `${atual.temperature_2m}${unidades.temperature_2m}`;
+
+        descricao_atual.textContent =
+            descricoes_clima[atual.weather_code] || 'Descrição não disponível';
+
+        vento_atual.textContent =
+            `${atual.wind_speed_10m} ${unidades.wind_speed_10m}`;
+
+        sensacao_atual.textContent =
+            `${atual.apparent_temperature}${unidades.apparent_temperature}`;
+
+        umidade_atual.textContent =
+            `${atual.relative_humidity_2m}${unidades.relative_humidity_2m}`;
 
     }).catch(function(erro){
         mensagem.textContent = `Não foi possível consultar o clima.`;

@@ -31,12 +31,54 @@
         </div>
 
         <section id="clima_atual">
-            <ul id="dados_clima"></ul>
-            <p><i class="fi fi-rs-marker"></i></p>
-            <h2>℃</h2>
-            <p><i class="fi fi-rr-wind"></i></p>
-            <p><i class="fi fi-ts-temperature-high"></i></p>
-            <p><i class="fi fi-rs-dewpoint"></i></p>
+
+            <div class="topo_clima">
+                <div class="local_clima">
+                    <i class="fi fi-rs-marker"></i>
+                    <h3 id="nome_local_clima"></h3>
+                    <button id="favoritar" type="button">☆</button>
+                </div>
+
+                <p id="data_clima"></p>
+            </div>
+
+            <div class="resumo_clima">
+                <div id="icone_condicao"></div>
+
+                <div class="temperatura_clima">
+                    <h2 id="temperatura_atual"></h2>
+                    <p id="descricao_atual"></p>
+                </div>
+            </div>
+
+            <div class="detalhes_clima">
+
+                <div class="detalhe_clima">
+                    <i class="fi fi-rr-wind"></i>
+                    <div>
+                        <p>Vento</p>
+                        <span id="vento_atual"></span>
+                    </div>
+                </div>
+
+                <div class="detalhe_clima">
+                    <i class="fi fi-ts-temperature-high"></i>
+                    <div>
+                        <p>Sensação térmica</p>
+                        <span id="sensacao_atual"></span>
+                    </div>
+                </div>
+
+                <div class="detalhe_clima">
+                    <i class="fi fi-rs-dewpoint"></i>
+                    <div>
+                        <p>Umidade</p>
+                        <span id="umidade_atual"></span>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
 
         <section id="cidades_favoritas">

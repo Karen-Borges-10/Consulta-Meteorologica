@@ -51,8 +51,13 @@ main{
     gap: 20px 24px;
     align-content: start;
 }
-#buscar_cidade {
+ #area_busca {
     grid-area: buscar;
+    position: relative;
+    width: 100%;
+}
+
+#buscar_cidade {
     display: flex;
     gap: 20px;
     width: 100%;
@@ -82,11 +87,6 @@ main{
         font-weight: bold;
         cursor: pointer;
     }
-}
-/* ÁREA DE PESQUISA E RESULTADOS */
-#area_busca {
-    position: relative;
-    width: 100%;
 }
 
 #selecao_localidade {
@@ -139,9 +139,8 @@ main{
     border-radius: 9px;
 
     display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
     gap: 25px;
 
     h2 {
@@ -157,6 +156,96 @@ main{
     color: #515fc5;
     font-size: 28px;
 }
+
+.topo_clima {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.local_clima {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.local_clima i {
+    color: #515fc5;
+    font-size: 27px;
+}
+
+.local_clima h3 {
+    font-size: 23px;
+}
+
+#favoritar {
+    border: none;
+    background: none;
+    color: #7184aa;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#data_clima {
+    margin-left: 46px;
+    color: #7184aa;
+    font-size: 16px;
+}
+
+/* TEMPERATURA E DESCRIÇÃO */
+.resumo_clima {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#icone_condicao {
+    width: 125px;
+    min-height: 100px;
+}
+
+.temperatura_clima h2 {
+    font-size: 60px;
+    color: #20365d;
+}
+
+.temperatura_clima p {
+    font-size: 20px;
+    margin-top: 8px;
+}
+
+/* INFORMAÇÕES INFERIORES */
+.detalhes_clima {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.detalhe_clima {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+}
+
+.detalhe_clima i {
+    color: #515fc5;
+    font-size: 30px;
+}
+
+.detalhe_clima p {
+    color: #7184aa;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.detalhe_clima span {
+    color: #20365d;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 
 #cidades_favoritas {
     grid-area: favoritas;
